@@ -7,8 +7,8 @@ import './index.css'
 
 import {ChannelContainer, ChannelListContainer} from './components'
 
-const apiKey =  'w3hwa7jttwh8'
-const client = StreamChat.getInstance(apiKey)
+const apiKey =  process.env.REACT_APP_API_KEY
+const client = StreamChat.getInstance(apiKey);
 
 export default function App() {
    
