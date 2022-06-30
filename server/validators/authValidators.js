@@ -7,8 +7,8 @@ const sigInValidator ={
 const signUpValidator ={
     fullName:'string required',
     ...sigInValidator,
-    confimrPassword:'string required',
-    phone:"number required",
+    confirmPassword:'string required',
+    phone:"string required",
     avatarURL:'string'
 }
 
