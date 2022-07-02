@@ -14,21 +14,27 @@ const signIn = async(req, res)=>{
     const {username, password} = req.body
 
     // create new stream chat
+   try {
     const streamChat = new StreamChat(STREAM_API_KEY, STREAM_SECRET)
 
     // get all users that matche the username within the streamchat
-    const {user} = streamChat.queryUsers({name:username})
+    const {users} = await streamChat.queryUsers({name:username})
+ 
+    if(users.length < 1) return res.status(400).json({message:'incorrect user credential or user not registered!'})
 
-    if(user.length < 1) return res.status(400).json({message:'incorrect user credential or user not registered!'})
+    const isCorrectPassword = await bcrypt.compare(password, users[0].hashedPassword) 
 
-    const isCorrectPassword = await bcrypt.compare(password, user[0].hashedPassword) 
-
-    const token =  serverClient.createUserToken(user[0].id)
+    const token =  serverClient.createUserToken(users[0].id)
 
     if(!isCorrectPassword) return res.status(400).json({message:'incorrect user credential or user not registered!'})
 
     return res.status(200)
-    .json({token, username, fullName:user[0].fullName, userId:user[0].id, hashedPassword:user[0].hashedPassword, phone:user[0].phone})
+    .json({token, username, fullName:users[0].fullName, userId:users[0].id, hashedPassword:users[0].hashedPassword, phone:users[0].phone})
+   } catch (error) {
+     
+    return res.status(500).json({message:error})   
+    
+   }
 }
 
 const signUp = async(req, res)=>{
