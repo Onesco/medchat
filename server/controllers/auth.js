@@ -30,10 +30,9 @@ const signIn = async(req, res)=>{
 
     return res.status(200)
     .json({token, username, fullName:users[0].fullName, userId:users[0].id, hashedPassword:users[0].hashedPassword, phone:users[0].phone})
-   } catch (error) {
-     
+   } 
+   catch (error) {  
     return res.status(500).json({message:error})   
-    
    }
 }
 
