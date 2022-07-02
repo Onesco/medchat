@@ -1,1 +1,1 @@
-{}
+{"get/":{},"post/login":{"bodySchema":{"type":"object","properties":{"username":{"type":"string"},"password":{"type":"string"}},"required":["username","password"],"additionalProperties":false}},"post/signup":{"bodySchema":{"type":"object","properties":{"fullName":{"type":"string"},"username":{"type":"string"},"password":{"type":"string"},"confirmPassword":{"type":"string"},"phone":{"type":"string"},"avatarURL":{"type":"string"}},"required":["fullName","username","password","confirmPassword","phone"],"additionalProperties":false}}}

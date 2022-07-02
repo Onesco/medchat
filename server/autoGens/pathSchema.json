@@ -1,1 +1,1 @@
-{}
+{"get/":{"querySchema":{}},"post/login":{"body":{"username":"string required","password":"string required"},"querySchema":{}},"post/signup":{"body":{"fullName":"string required","username":"string required","password":"string required","confirmPassword":"string required","phone":"string required","avatarURL":"string"},"querySchema":{}}}
