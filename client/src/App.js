@@ -3,8 +3,10 @@ import {StreamChat} from 'stream-chat'
 import { Chat} from 'stream-chat-react';
 import Cookies from 'universal-cookie'
 
+
 import 'stream-chat-react/dist/css/index.css';
 import './index.css'
+
 
 import {ChannelContainer, ChannelListContainer, Auth} from './components'
 
@@ -44,14 +46,16 @@ export default function App() {
   if(!authToken) return <Auth/>
    
   return (
-    <div className='flex w-full'>
-        <Chat client={chatClient} >
+    <div className='flex'>
+        <Chat client={chatClient}>
+         <div className='flex'>
           <ChannelListContainer
-            isCreating={isCreating}
-            setIsCreating={setIsCreating}
-            setCreateType={setCreateType}
-            setIsEditing={setIsEditing}
-          />
+              isCreating={isCreating}
+              setIsCreating={setIsCreating}
+              setCreateType={setCreateType}
+              setIsEditing={setIsEditing}
+            />
+         </div>
           <ChannelContainer
               isEditing={isEditing}
               setIsEditing={setIsEditing} 
